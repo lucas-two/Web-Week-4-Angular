@@ -1,0 +1,22 @@
+{
+  "name": "week-4-angular-new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucas-two/Week-4-Angular-NEW.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucas-two/Week-4-Angular-NEW/issues"
+  },
+  "homepage": "https://github.com/lucas-two/Week-4-Angular-NEW#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}
