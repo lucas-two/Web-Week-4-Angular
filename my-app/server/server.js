@@ -1,15 +1,17 @@
 const express = require('express');
-const chalk = require('chalk');
 const path = require('path');
 
 const app = express();
 const http = require('http').Server(app);
-app.use(express.static(__dirname + 'view'));
+const bodyParser = require('body-parser');
 
 let server = http.listen(3000, () =>{
-  let port = server.address().port;
-  console.log(`Listening on port ${chalk.green(port)}...`);
-
+   let port = server.address().port;
+   console.log(`Listening on port ${port}...`);
 });
 
-require('./route.js')(app,path);
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../dist/my-app/')))
+
+require('./routes/api-login.js')(app,path)
+//require('./listen.js')(app,path);
