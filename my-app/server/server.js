@@ -11,7 +11,18 @@ let server = http.listen(3000, () =>{
 });
 
 app.use(bodyParser.json());
+
+
+// NOTE: I tried linking this to the angular components through 'src/app'
+//       but it didn't seem to work. The 'dist/my-app' is not showing my actual
+//       components.
 app.use(express.static(path.join(__dirname, '../dist/my-app/')))
 
+
 require('./routes/api-login.js')(app,path)
+
+
+// NOTE: Was not sure how to create a seperate listen file, so I added it back
+//       into server.js
+
 //require('./listen.js')(app,path);
