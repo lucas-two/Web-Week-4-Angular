@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist/my-app/')))
@@ -16,4 +16,4 @@ let server = http.listen(3000, () =>{
   console.log(`Listening on port ${port}...`);
 });
 
-app.post('/login', require('./router/login-api'));
+app.post('/login', require('./routes/api-login'));

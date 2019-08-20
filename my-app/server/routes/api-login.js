@@ -1,5 +1,7 @@
-const fs = require('fs');
+// Added some bizzare looking code from the lecture slides
+// I am not sure if this is correct.
 
+const fs = require('fs');
 
 module.exports = (app, path) => {
   const u = req.body.username;
