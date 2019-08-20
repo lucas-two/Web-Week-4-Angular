@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
         }
       });
   }
+}
 
 //   LoginUser_OLD(event) {
 //     event.preventDefault();
