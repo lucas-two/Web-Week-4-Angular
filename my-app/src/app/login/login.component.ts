@@ -1,33 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
-  email: string;
-  password: string;
-  wrongPass: boolean;
+  userpass: string;
+  useremail: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private httpClient: HttpClient) { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  public LoginUser() {
+    this.httpClient.post(BACKEND_URL + '/login', this.userpass, httpOptions)
+      .subscribe((data: any) => {
+        alert(JSON.stringify(this.userpass));
+        if (data.ok) {
+          // Store info
+        }
+      });
   }
 
-  LoginUser() {
-    if (
-      this.email === 'admin@email.com' && this.password === 'a' ||
-      this.email === 'tim@email.com' && this.password === 't' ||
-      this.email === 'john@email.com' && this.password === 'j'
-      ) {
-      this.wrongPass = false;
-      this.router.navigate(['/account/']);
-
-    } else {
-      this.wrongPass = true;
-    }
-  }
-
-}
+//   LoginUser_OLD(event) {
+//     event.preventDefault();
+//     for (const i in this.users) {
+//       if (this.users[i].email === this.email && this.users[i].pwd === this.password) {
+//         this.router.navigate(['/account']);
+//       }
+//     }
+//   }
+// }
