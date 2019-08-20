@@ -14,10 +14,10 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 
 export class LoginComponent implements OnInit {
-  userpass: string;
-  useremail: string;
+  email: string;
+  password: string;
 
-  constructor(private router: Router, private httpClient: HttpClient) { }
+  constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {}
 
   public LoginUser() {

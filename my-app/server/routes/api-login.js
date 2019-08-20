@@ -3,6 +3,7 @@
 
 const fs = require('fs');
 
+// create an array of users.
 module.exports = (app, path) => {
   const u = req.body.username;
   const p = req.body.password;
