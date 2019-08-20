@@ -1,26 +1,49 @@
-// Added some bizzare looking code from the lecture slides
-// I am not sure if this is correct.
-
-const fs = require('fs');
+class Customer {
+  constructor(email, username, birthdate, age, valid = false) {
+    this.email = email;
+    this.username = username;
+    this.birthdate = birthdate;
+    this.age = age;
+    this.valid = valid;
+  }
+}
 
 // create an array of users.
 module.exports = (app, path) => {
-  const u = req.body.username;
-  const p = req.body.password;
-  c = u + p;
-  console.log(c);
-  fs.readFile('./server/data/users.json', 'utf8', (err, data) => {
-    if(err) throw err;
-    let userArray = JSON.parse(data);
-    console.log(userArray);
-    let i = userArray.findIndex(user =>
-      ((user.username == u) && (user.password == p)));
-      if (i == -1) {
-        res.send({'ok': false});
-      }
-      else {
-        console.log(userArray[i]);
-        res.send({'ok': true});
-      }
-  });
+  let users = [
+    {'email':'a@mail.com','pwd':'123','id':1,'username':'Alice','birthdate':'11-11-1964','age':50},
+    {'email':'b@mail.com','pwd':'123','id':2,'username':'Bob','birthdate':'11-11-1964','age':24},
+    {'email':'c@mail.com','pwd':'123','id':3,'username':'Connor','birthdate':'11-11-1964','age':76}
+  ];
+
+  // Return a 'Bad Request' message.
+  if (!req.body) {
+    return res.sendStatus(400);
+  }
+
+  // let customer = {};
+  // customer.valid = false;
+  // customer.email = '';
+  // customer.username = '';
+  // customer.birthdate = '';
+  // customer.age = 0;
+
+for (let i = 0; i < users.length; i++){
+
+  // If we have a valid customer
+  if (req.body.userEmail == users[i].email && req.body.userPwd == users[i].pwd){
+      const customer_obj = new Customer(
+      users[i].email,
+      users[i].username,
+      users[i].birthdate,
+      true);
+    // customer.valid = true;
+    // customer.email = users[i].email;
+    // customer.username = users[i].username;
+    // customer.birthdate = users[i].birthdate;
+    // customer.age = users[i].age;
+    }
+  }
+  // Send the customer object on
+  res.send(customer_obj);
 }

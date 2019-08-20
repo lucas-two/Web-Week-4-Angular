@@ -13,30 +13,38 @@ const BACKEND_URL = 'http://localhost:3000';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+class UserLoginDetails {
+  constructor(email, pwd) {
+    this.email = email;
+    this.pwd = pwd;
+  }
   email: string;
-  password: string;
+  pwd: string;
+}
+
+export class LoginComponent implements OnInit {
+
+  userEmail: string;
+  userPwd: string;
+  userValid: boolean;
+
+  // userValid: boolean;
 
   constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {}
 
   public LoginUser() {
-    this.httpClient.post(BACKEND_URL + '/login', this.userpass, httpOptions)
+    this.httpClient.post(BACKEND_URL + '/login', [this.userEmail, this.userPwd], httpOptions)
       .subscribe((data: any) => {
-        alert(JSON.stringify(this.userpass));
-        if (data.ok) {
+        // alert(JSON.stringify(this.userEmail));
+        if (data.valid) {
           // Store info
+          console.log('good');
+          this.userValid = true;
+        } else {
+          console.log('bad');
+          this.userValid = false;
         }
       });
   }
 }
-
-//   LoginUser_OLD(event) {
-//     event.preventDefault();
-//     for (const i in this.users) {
-//       if (this.users[i].email === this.email && this.users[i].pwd === this.password) {
-//         this.router.navigate(['/account']);
-//       }
-//     }
-//   }
-// }
