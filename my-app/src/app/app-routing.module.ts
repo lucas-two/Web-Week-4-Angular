@@ -7,7 +7,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'account/:age', component: AccountComponent },
+  { path: 'account/:id', component: AccountComponent },
   { path: 'welome', component: WelcomeComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' } // usally for a 404 page not found.

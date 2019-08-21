@@ -13,20 +13,11 @@ const BACKEND_URL = 'http://localhost:3000';
   styleUrls: ['./login.component.css']
 })
 
-// class UserLoginDetails {
-//   constructor(email, pwd) {
-//     this.email = email;
-//     this.pwd = pwd;
-//   }
-//   email: string;
-//   pwd: string;
-// }
-
 export class LoginComponent implements OnInit {
 
   userEmail: string;
   userPwd: string;
-  userValid: boolean;
+  userInvalid: boolean;
   user = {};
 
   constructor(private router: Router, private httpClient: HttpClient) {}
@@ -36,15 +27,20 @@ export class LoginComponent implements OnInit {
     this.user = { userEmail: this.userEmail, userPwd: this.userPwd};
     this.httpClient.post(BACKEND_URL + '/login', this.user)
       .subscribe((data: any) => {
-        // alert(JSON.stringify(this.userEmail));
+
+        // Login Success
         if (data.valid) {
-          // Store info
-          console.log(data.age);
-          this.userValid = true;
-          this.router.navigateByUrl('/account/' + data.age);
+
+          sessionStorage.setItem('idUser', data.id);
+          sessionStorage.setItem('emailUser', data.email);
+          sessionStorage.setItem('usernameUser', data.username);
+          sessionStorage.setItem('ageUser', data.age);
+          sessionStorage.setItem('birthdateUser', data.birthdate);
+          this.router.navigateByUrl('/account/' + data.id);
+
+        // Login Failure
         } else {
-          console.log('bad');
-          this.userValid = false;
+          this.userInvalid = true;
         }
       });
     }

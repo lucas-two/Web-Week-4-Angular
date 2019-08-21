@@ -1,24 +1,14 @@
-// class Customer {
-//   constructor(email, username, birthdate, age, valid = false) {
-//     this.email = email;
-//     this.username = username;
-//     this.birthdate = birthdate;
-//     this.age = age;
-//     this.valid = valid;
-//   }
-// }
-
-// create an array of users.
 module.exports = (app) => {
   app.post('/login',function(req,res){
-  console.log('hit by angular');
+
+  console.log('Hit by Angular'); // DEBUGGING ONLY
+
   let users = [
     {'email':'a@mail.com','pwd':'123','id':1,'username':'Alice','birthdate':'11-11-1964','age':50},
     {'email':'b@mail.com','pwd':'123','id':2,'username':'Bob','birthdate':'11-11-1964','age':24},
     {'email':'c@mail.com','pwd':'123','id':3,'username':'Connor','birthdate':'11-11-1964','age':76}
   ];
 
-  // Return a 'Bad Request' message.
   if (!req.body) {
     return res.sendStatus(400);
   }
@@ -29,26 +19,22 @@ module.exports = (app) => {
   customer.username = '';
   customer.birthdate = '';
   customer.age = 0;
+  customer.id = 0;
 
-for (let i = 0; i < users.length; i++){
+  for (let i = 0; i < users.length; i++){
 
-  // If we have a valid customer
-  console.log(req.body.userEmail);
+    console.log(req.body.userEmail); // DEBUGGING ONLY
 
-  if (req.body.userEmail == users[i].email && req.body.userPwd == users[i].pwd){
-      // const customer_obj = new Customer(
-      // users[i].email,
-      // users[i].username,
-      // users[i].birthdate,
-      // true);
-    customer.valid = true;
-    customer.email = users[i].email;
-    customer.username = users[i].username;
-    customer.birthdate = users[i].birthdate;
-    customer.age = users[i].age;
+    if (req.body.userEmail == users[i].email && req.body.userPwd == users[i].pwd){
+      customer.valid = true;
+      customer.email = users[i].email;
+      customer.username = users[i].username;
+      customer.birthdate = users[i].birthdate;
+      customer.age = users[i].age;
+      customer.id = users[i].id;
+      }
     }
-  }
-  // Send the customer object on
-  res.send(customer);
-});
+    // Send the customer object on
+    res.send(customer);
+  });
 }
