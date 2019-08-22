@@ -1,4 +1,4 @@
-# Week 4 - Angular Project
+# Angular Web App
 
 ## Instructions:
 1. terminal window 1: ng serve in my-app directory
