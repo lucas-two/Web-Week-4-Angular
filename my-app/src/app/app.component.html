@@ -1,9 +1,11 @@
 <nav class='navbar navbar-expand navbar-light bg-light'>
   <a class='navbar-brand'>My App</a>
   <ul class='nav nav-pills'>
-    <li><a class='nav-link' [routerLink]="['/']">Home</a></li>
-    <li><a class='nav-link' [routerLink]="['/login']" >Login</a></li>
-    <li><a class='nav-link' [routerLink]="['/account']">Account</a></li>
+    <li><a class='nav-link' [routerLink]="['/welcome']">Home</a></li>
+    <li><a class='nav-link' *ngIf="LoginStatus()" [routerLink]="['/account', getidUser()]">Account</a></li>
+    <li><a class='nav-link' *ngIf="LoginStatus()" [routerLink]="['/profile', getidUser()]">Profile</a></li>
+    <li><a class='nav-link' *ngIf="!LoginStatus()" [routerLink]="['/login']" >Login</a></li>
+    <li><a class='nav-link' *ngIf="LoginStatus()" [routerLink]="['/login']" (click)="LogOut()">Logout</a></li>
   </ul>
 </nav>
 <div class="container">

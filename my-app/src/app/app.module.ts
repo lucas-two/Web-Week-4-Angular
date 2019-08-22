@@ -8,13 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     LoginComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ProfileComponent,
 
   ],
   imports: [

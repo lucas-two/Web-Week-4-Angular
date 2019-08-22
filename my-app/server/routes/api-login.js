@@ -4,9 +4,30 @@ module.exports = (app) => {
   console.log('Hit by Angular'); // DEBUGGING ONLY
 
   let users = [
-    {'email':'a@mail.com','pwd':'123','id':1,'username':'Alice','birthdate':'11-11-1964','age':50},
-    {'email':'b@mail.com','pwd':'123','id':2,'username':'Bob','birthdate':'11-11-1964','age':24},
-    {'email':'c@mail.com','pwd':'123','id':3,'username':'Connor','birthdate':'11-11-1964','age':76}
+    {
+    'email':'a@mail.com',
+    'pwd':'123',
+    'id':1,
+    'username':'Alice',
+    'birthdate':'11-11-1964',
+    'age':50
+    },
+    {
+    'email':'b@mail.com',
+    'pwd':'123',
+    'id':2,
+    'username':'Bob',
+    'birthdate':'11-11-1964',
+    'age':24
+    },
+    {
+    'email':'c@mail.com',
+    'pwd':'123',
+    'id':3,
+    'username':'Connor',
+    'birthdate':'11-11-1964',
+    'age':76
+    }
   ];
 
   if (!req.body) {
