@@ -1,0 +1,15 @@
+<h1>Welcome to Chat!</h1>
+<br>
+
+<!-- User message input -->
+<div class="pull-left">
+    <div class="input-group">
+      <input type="text" class="form-control" [(ngModel)]="userText"  (keydown.enter)="sendMessage()" placeholder="Enter message">
+      <button type="submit" class="btn btn-primary btn-small" (click)="sendMessage()">Send</button>
+    </div>
+</div>
+
+<!-- Chat history -->
+<div class="form-group">
+    <textarea class="form-control" rows="5" disabled></textarea>
+</div>

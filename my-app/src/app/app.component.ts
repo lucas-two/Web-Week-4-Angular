@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { WebSocketService } from './web-socket.service';
 
 @Component({
   selector: 'app-root',
@@ -6,22 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'my-app';
 
-  getidUser() {
-    return sessionStorage.getItem('idUser');
+  constructor(private webSocketService: WebSocketService) {}
+
+  ngOnInit() {
+  // Listen to an event from the socket io server
+  this.webSocketService.listen('test event').subscribe((data) => {
+    console.log(data);
+  });
   }
 
-  LoginStatus() {
-    if (sessionStorage.getItem('idUser') == null) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  LogOut() {
-    sessionStorage.clear();
-  }
 }
