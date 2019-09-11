@@ -1,9 +1,15 @@
-module.exports = function(http){
-  const io = require('socket.io')(http);
+module.exports = {
+  connect: function(io, PORT) {
 
-  io.on('connection', function(socket){
-    console.log("A user connected");
+    io.on('connection', (socket) => {
+      // When a connection request is made, output it.
+      console.log(`User connection on port ${PORT} : ${socket.id}`);
 
-    socket.emit('test event', 'here is some data');
-  });
+      // When we recieve a message, emit it to all sockets
+      socket.on('message', (message) => {
+        io.emit('message', message);
+
+      });
+    });
+  }
 }

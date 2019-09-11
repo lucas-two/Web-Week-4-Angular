@@ -1,6 +1,7 @@
-module.exports = function(http){
-  const server = http.listen(3000, () =>{
-  let port = server.address().port;
-  console.log(`Listening on port ${port}...`);
-});
+module.exports = {
+  listen: function(app, PORT) {
+    app.listen(PORT, () => {
+      console.log(`Listening on port ${PORT}...`);
+    })
+  }
 }

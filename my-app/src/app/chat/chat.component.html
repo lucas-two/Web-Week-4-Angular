@@ -4,12 +4,18 @@
 <!-- User message input -->
 <div class="pull-left">
     <div class="input-group">
-      <input type="text" class="form-control" [(ngModel)]="userText"  (keydown.enter)="sendMessage()" placeholder="Enter message">
+      <input type="text" class="form-control" [(ngModel)]="messageContent"  (keydown.enter)="sendMessage()" placeholder="Enter message">
       <button type="submit" class="btn btn-primary btn-small" (click)="sendMessage()">Send</button>
     </div>
 </div>
-
-<!-- Chat history -->
-<div class="form-group">
-    <textarea class="form-control" rows="5" disabled></textarea>
+<br>
+<div *ngFor="let message of messageLog">
+    <div class="card">
+      <div class="card bg-light ">
+        <div class="card-body">
+          <b>Anonymous:</b> {{ message }}
+        </div>
+      </div>
+    </div>
+    <br>
 </div>
